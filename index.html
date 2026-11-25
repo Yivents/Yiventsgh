@@ -1,0 +1,22 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Yivents</title>
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+<style>
+:root{--b:#1E5FB4;--o:#F7941D;--ink:#14213d;--bg:#f6f8fc}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+header{display:flex;justify-content:space-between;align-items:center;padding:8px 16px;background:#fff;border-bottom:1px solid #e3e8f0}
+header img{height:48px}nav a{margin-left:16px;color:var(--b);font-weight:600;text-decoration:none}
+main{max-width:860px;margin:0 auto;padding:16px}
+.card{background:#fff;border-radius:12px;padding:16px;margin:12px 0;box-shadow:0 1px 3px #0001}
+input,select,textarea,button{font:inherit;padding:10px;margin:4px 0;width:100%;border:1px solid #c9d2e0;border-radius:8px;min-height:44px}
+button,.btn{background:var(--b);color:#fff;border:0;font-weight:600;cursor:pointer;width:auto;padding:10px 18px;border-radius:8px;text-decoration:none;display:inline-block}
+button.o{background:var(--o)}button.g{background:#e8edf5;color:var(--ink)}
+label{font-weight:600;font-size:14px;display:block;margin-top:8px}
+table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:6px;border-bottom:1px solid #e3e8f0;text-align:left}
+.wrap{overflow-x:auto}.err{color:#b00020}.ok{color:#0a7a3d}.tag{background:#fff3e0;color:#b25e00;padding:2px 8px;border-radius:99px;font-size:12px}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}.big{font-size:28px;font-weight:700;color:var(--b)}
+.ticket{max-width:300px;margin:auto;text-align:center;border:2px dashed var(--b);border-radius:16px;padding:16px;background:#fff}
+img.fl{max-width:100%;border-radius:12px}
+@media print{header,.noprint{display:none}}
+</style></head><body><div id="app"></div><script type="module" src="app.js"></script></body></html>
