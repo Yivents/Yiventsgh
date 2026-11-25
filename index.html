@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Static design preview of Yivents — registration, payment tracking and ticketing for Ghanaian event organizers. The live app runs on Firebase.">
+  <title>Yivents — static design preview</title>
+  <style>
+    :root {
+      --brand-primary: #104080;
+      --brand-primary-hover: #0C3368;
+      --brand-primary-ink: #FFFFFF;
+      --brand-accent: #F08010;
+      --brand-accent-ink: #241300;
+      --brand-cyan: #30A0E0;
+      --brand-primary-soft: #EAF1FA;
+      --brand-accent-soft: #FFF2DF;
+      --ink: #14213D;
+      --ink-muted: #4B5B75;
+      --surface: #FFFFFF;
+      --surface-alt: #F5F8FC;
+      --border: #D5DEEA;
+      --success: #0E6B4F;
+      --success-soft: #E3F5EE;
+      --radius: 14px;
+      --radius-sm: 10px;
+      --shadow: 0 12px 32px rgba(16, 64, 128, 0.12);
+      --tap: 44px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--surface-alt);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+    }
+    h1, h2, h3 { font-family: "Plus Jakarta Sans", Inter, system-ui, sans-serif; line-height: 1.2; margin: 0 0 .5em; }
+    h1 { font-size: clamp(2rem, 5vw, 3.25rem); }
+    h2 { font-size: clamp(1.5rem, 3.4vw, 2.25rem); }
+    h3 { font-size: 1.15rem; }
+    p { margin: 0 0 1rem; }
+    a { color: var(--brand-primary); text-underline-offset: 3px; }
+    img { max-width: 100%; display: block; }
+    :focus-visible { outline: 3px solid var(--brand-accent); outline-offset: 2px; }
+
+    .container { width: min(1120px, 92vw); margin-inline: auto; }
+    .muted { color: var(--ink-muted); }
+    .tiny { font-size: .82rem; }
+    .row { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; }
+    .spread { display: flex; gap: .75rem; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    .stack { display: grid; gap: 1rem; }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: var(--tap); padding: .65rem 1.1rem;
+      border-radius: var(--radius-sm); border: 1px solid transparent;
+      font-weight: 600; text-decoration: none; cursor: pointer;
+    }
+    .btn-primary { background: var(--brand-primary); color: var(--brand-primary-ink); }
+    .btn-primary:hover { background: var(--brand-primary-hover); }
+    .btn-accent { background: var(--brand-accent); color: var(--brand-accent-ink); }
+    .btn-outline { border-color: var(--border); background: var(--surface); color: var(--brand-primary); }
+    input {
+      min-height: var(--tap); width: 100%;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: .7rem .85rem; font: inherit; color: inherit;
+    }
+    label { display: block; font-weight: 600; margin-bottom: .35rem; }
+
+    .notice {
+      background: var(--brand-accent-soft); color: var(--brand-accent-ink);
+      border-bottom: 1px solid #E7C79A; padding: .65rem 0;
+    }
+    .notice .container { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; }
+    .notice strong { color: #6B4300; }
+
+    header.site {
+      background: var(--surface); border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 5;
+    }
+    header.site .container { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .brand { display: flex; align-items: center; gap: .65rem; text-decoration: none; color: var(--ink); font-weight: 800; font-size: 1.2rem; }
+    .brand img { width: 44px; height: 44px; border-radius: 8px; object-fit: contain; }
+    nav ul { list-style: none; display: flex; gap: 1.1rem; margin: 0; padding: 0; flex-wrap: wrap; }
+    nav a { min-height: var(--tap); display: inline-flex; align-items: center; text-decoration: none; font-weight: 600; }
+
+    .hero { background: linear-gradient(135deg, var(--brand-primary-soft), #FFFFFF 65%); padding: clamp(2.5rem, 6vw, 5rem) 0; }
+    .hero-inner { display: grid; grid-template-columns: 1.25fr .75fr; gap: 2.5rem; align-items: center; }
+    .badge {
+      display: inline-block; background: var(--brand-primary-soft); color: var(--brand-primary);
+      border: 1px solid #C9D9EE; border-radius: 999px; padding: .35rem .8rem; font-weight: 700; font-size: .85rem;
+    }
+    .search { display: flex; gap: .6rem; max-width: 560px; }
+    .hero-art { display: grid; place-items: center; }
+    .hero-art img { width: min(220px, 60vw); filter: drop-shadow(0 18px 30px rgba(16,64,128,.18)); }
+
+    section.block { padding: clamp(2.5rem, 5vw, 4rem) 0; }
+    section.alt { background: var(--surface); border-block: 1px solid var(--border); }
+
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(265px, 1fr)); gap: 1.25rem; margin-top: 1.75rem; }
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+      display: flex; flex-direction: column;
+    }
+    .card .flyer { aspect-ratio: 16 / 9; display: grid; place-items: center; color: var(--brand-primary); font-weight: 800; }
+    .card .body { padding: 1.1rem; display: grid; gap: .6rem; flex: 1; }
+    .card .meta { display: flex; gap: .5rem; flex-wrap: wrap; font-size: .9rem; color: var(--ink-muted); }
+    .pill { background: var(--brand-primary-soft); color: var(--brand-primary); border-radius: 999px; padding: .15rem .6rem; font-weight: 700; font-size: .78rem; }
+    .pill.price { background: var(--success-soft); color: var(--success); }
+
+    .ticket-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; }
+    .ticket {
+      background: var(--surface); border: 2px solid var(--brand-primary);
+      border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; max-width: 460px;
+    }
+    .ticket-head { background: var(--brand-primary); color: var(--brand-primary-ink); padding: 1rem 1.2rem; display: flex; align-items: center; gap: .75rem; }
+    .ticket-head img { width: 38px; height: 38px; background: #FFFFFF; border-radius: 6px; padding: 3px; object-fit: contain; }
+    .ticket-body { padding: 1.2rem; display: grid; grid-template-columns: 1fr 112px; gap: 1rem; align-items: center; }
+    .qr {
+      width: 112px; height: 112px; background:
+        linear-gradient(90deg, var(--ink) 10px, transparent 10px) 0 0 / 20px 20px,
+        linear-gradient(var(--ink) 10px, transparent 10px) 0 0 / 20px 20px,
+        #FFFFFF;
+      border: 1px solid var(--border); border-radius: 6px;
+    }
+    .kv { display: grid; grid-template-columns: auto 1fr; gap: .35rem .75rem; font-size: .92rem; }
+    .kv dt { color: var(--ink-muted); }
+    .kv dd { margin: 0; font-weight: 600; word-break: break-word; }
+
+    .callout { background: var(--brand-primary); color: var(--brand-primary-ink); border-radius: var(--radius); padding: 1.6rem; }
+    .callout h2 { color: var(--brand-primary-ink); }
+    .callout .btn { background: var(--brand-accent); color: var(--brand-accent-ink); }
+
+    footer.site { background: #0C3368; color: #DCE8F7; padding: 2.5rem 0 2rem; }
+    footer.site a { color: #FFFFFF; }
+    footer.site .row { margin-top: 1rem; }
+    footer.site .tiny { color: #B9CDE6; }
+
+    @media (max-width: 800px) {
+      .hero-inner, .ticket-grid { grid-template-columns: 1fr; }
+      nav ul { display: none; }
+      .search { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="notice" role="note">
+    <div class="container">
+      <strong>Static design preview.</strong>
+      <span>This page shows how Yivents looks. It is not the live web app — the real app runs on Firebase with Next.js, Cloud Functions, Firestore and QR tickets.</span>
+    </div>
+  </div>
+
+  <header class="site">
+    <div class="container">
+      <a class="brand" href="#top" aria-label="Yivents home">
+        <img src="apps/web/public/brand/logo.png" alt="Yivents logo">
+        <span>Yivents</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#events">Find events</a></li>
+          <li><a href="#tickets">Your ticket</a></li>
+          <li><a href="#host">Host an event</a></li>
+          <li><a href="#legal">Legal</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <div class="container hero-inner">
+        <div class="stack">
+          <p><span class="badge">Registration and tickets for Ghanaian events</span></p>
+          <h1>Find your next event</h1>
+          <p class="muted">Discover an event, register in a few minutes, pay the organizer directly if it is paid, and keep your QR ticket on your phone. You never need an account.</p>
+          <form class="search" action="#" onsubmit="return false" role="search">
+            <label class="visually-hidden" for="q">Search events by name</label>
+            <input id="q" name="q" type="search" placeholder="Search by event name">
+            <button class="btn btn-primary" type="submit">Search</button>
+          </form>
+          <p class="tiny muted">Placeholder preview only — search does nothing on this static page.</p>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <img src="apps/web/public/brand/logo.png" alt="">
+        </div>
+      </div>
+    </div>
+
+    <section class="block" id="events" aria-labelledby="events-heading">
+      <div class="container">
+        <div class="spread">
+          <div>
+            <h2 id="events-heading">Upcoming events</h2>
+            <p class="muted">Only events approved for public listing appear here.</p>
+          </div>
+          <a class="btn btn-accent" href="#host">Host your event</a>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="flyer" style="background:#EAF1FA">Accra Tech Saturday</div>
+            <div class="body">
+              <h3>Accra Tech Saturday</h3>
+              <div class="meta"><span>Sat 14 Mar 2026</span><span>·</span><span>In person</span></div>
+              <p class="muted tiny">Kwame Nkrumah Memorial Park, Accra</p>
+              <div class="row"><span class="pill">Free</span><span class="pill price">No account needed</span></div>
+              <a class="btn btn-outline" href="#tickets">View event</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="flyer" style="background:#FFF2DF;color:#8A5200">Kumasi Business Mixer</div>
+            <div class="body">
+              <h3>Kumasi Business Mixer</h3>
+              <div class="meta"><span>Thu 26 Mar 2026</span><span>·</span><span>Hybrid</span></div>
+              <p class="muted tiny">Kejetia, Kumasi · Pay the organizer by MoMo</p>
+              <div class="row"><span class="pill price">GH₵ 50.00</span></div>
+              <a class="btn btn-outline" href="#tickets">View event</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="flyer" style="background:#E3F5EE;color:#0E6B4F">Design for Ghana Webinar</div>
+            <div class="body">
+              <h3>Design for Ghana Webinar</h3>
+              <div class="meta"><span>Wed 08 Apr 2026</span><span>·</span><span>Online</span></div>
+              <p class="muted tiny">Join link released after approval</p>
+              <div class="row"><span class="pill">Free</span></div>
+              <a class="btn btn-outline" href="#tickets">View event</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="block alt" id="tickets" aria-labelledby="ticket-heading">
+      <div class="container ticket-grid">
+        <div class="stack">
+          <h2 id="ticket-heading">A QR ticket you can scan at the door</h2>
+          <p>Tickets are rendered on demand from one shared component. The QR code contains only a random code — no personal information, no payment data. Yivents never stores a generated ticket file.</p>
+          <p class="muted">Door staff use a per-event link and PIN. No door-staff accounts, no database role field.</p>
+          <a class="btn btn-primary" href="#host">See organizer tools</a>
+        </div>
+        <div class="ticket" aria-label="Example QR ticket">
+          <div class="ticket-head">
+            <img src="apps/web/public/brand/logo.png" alt="">
+            <strong>Yivents ticket</strong>
+          </div>
+          <div class="ticket-body">
+            <div>
+              <h3>Accra Tech Saturday</h3>
+              <dl class="kv">
+                <dt>Name</dt><dd>Ama Mensah</dd>
+                <dt>Ticket</dt><dd>General admission</dd>
+                <dt>Date</dt><dd>Sat 14 Mar 2026</dd>
+                <dt>Venue</dt><dd>Kwame Nkrumah Memorial Park</dd>
+                <dt>Code</dt><dd>yv_8f3c1a09d74b2e65</dd>
+              </dl>
+            </div>
+            <div class="qr" role="img" aria-label="Decorative QR code placeholder"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="host" aria-labelledby="host-heading">
+      <div class="container">
+        <h2 id="host-heading">Built for Ghanaian organizers</h2>
+        <div class="cards">
+          <article class="card"><div class="body"><h3>Create a program</h3><p class="muted">Set a private link, ticket types, capacity, form fields and payment instructions.</p></div></article>
+          <article class="card"><div class="body"><h3>Track payments</h3><p class="muted">Approve registrations after MoMo or bank transfer. Yivents never holds money.</p></div></article>
+          <article class="card"><div class="body"><h3>Check in safely</h3><p class="muted">Transactions prevent double check-in and over-capacity approvals.</p></div></article>
+        </div>
+        <div class="callout" style="margin-top:1.75rem">
+          <h2>Money rule</h2>
+          <p>Yivents never receives or processes payments. Attendees pay the organizer directly. There is no Paystack or Flutterwave integration. Currency is GHS only, stored as whole pesewas.</p>
+          <a class="btn" href="#legal">Read the draft terms</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site" id="legal">
+    <div class="container">
+      <strong>Yivents</strong>
+      <p class="tiny">Registration, payment tracking and ticketing for Ghanaian events.</p>
+      <div class="row">
+        <a href="#legal">Terms</a><a href="#legal">Privacy</a><a href="#legal">Refunds</a><a href="#legal">Accessibility</a>
+      </div>
+      <p class="tiny" style="margin-top:1rem">Draft legal text only — [LEGAL REVIEW NEEDED] · [YOUR NAME] · [SUPPORT EMAIL] · [DOMAIN]. References to Ghana's Data Protection Act, 2018 (Act 843) are included in the real legal pages and require lawyer review before launch.</p>
+      <p class="tiny">This static preview is hosted on GitHub Pages. The working Yivents web app will be deployed to Firebase Hosting + Cloud Run.</p>
+    </div>
+  </footer>
+</body>
+</html>
