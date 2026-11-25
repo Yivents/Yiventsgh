@@ -1,0 +1,41 @@
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+@import '@fontsource/plus-jakarta-sans/700.css';
+
+.yv-ticket {
+  --ticket-primary: var(--brand-primary, #104080);
+  --ticket-accent: var(--brand-accent, #F08010);
+  background: #fff;
+  color: #14213D;
+  font-family: 'Inter', sans-serif;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 16px 42px rgba(16, 64, 128, .18);
+  border-top: 8px solid var(--ticket-primary);
+  width: 100%;
+  max-width: 460px;
+}
+.yv-ticket-head { display: flex; align-items: center; gap: .85rem; padding: 1.25rem 1.4rem 0; }
+.yv-ticket-logo { width: 52px; height: 52px; object-fit: contain; }
+.yv-ticket-kicker { margin: 0; text-transform: uppercase; letter-spacing: .12em; font-size: .68rem; font-weight: 700; color: var(--ticket-primary); }
+.yv-ticket-head h2 { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; font-size: 1.35rem; margin: .1rem 0 0; line-height: 1.2; overflow-wrap: anywhere; }
+.yv-ticket-body { display: grid; grid-template-columns: 1fr 190px; gap: 1rem; padding: 1.1rem 1.4rem 1.3rem; align-items: center; }
+.yv-ticket-label { font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; color: #64748B; margin: .65rem 0 .1rem; }
+.yv-ticket-name { font-size: 1.18rem; font-weight: 700; margin: 0; overflow-wrap: anywhere; }
+.yv-ticket-strong { font-weight: 600; margin: 0; overflow-wrap: anywhere; }
+.yv-ticket-amount { margin: .9rem 0 0; font-weight: 700; color: var(--ticket-primary); }
+.yv-ticket-qr-wrap { background: #fff; border: 1px solid #E2E8F0; border-radius: 12px; padding: .5rem; text-align: center; }
+.yv-ticket-qr { width: 180px; height: 180px; display: block; margin: 0 auto; }
+.yv-ticket-qr-skeleton { width: 180px; height: 180px; margin: 0 auto; background: #F1F5F9; border-radius: 8px; }
+.yv-ticket-code { margin: .3rem 0 0; font-size: .65rem; color: #64748B; overflow-wrap: anywhere; }
+.yv-ticket-foot { background: var(--ticket-primary); color: #fff; padding: .6rem 1.4rem; font-size: .72rem; text-align: center; }
+.yv-ticket-horizontal { max-width: 780px; }
+.yv-ticket-horizontal .yv-ticket-body { grid-template-columns: 1fr 210px; }
+.yv-ticket-card { max-width: 340px; }
+.yv-ticket-card .yv-ticket-body { grid-template-columns: 1fr; }
+.yv-ticket-card .yv-ticket-qr-wrap { justify-self: center; }
+@media (max-width: 480px) {
+  .yv-ticket-body { grid-template-columns: 1fr; }
+  .yv-ticket-qr-wrap { justify-self: center; }
+}

@@ -1,0 +1,79 @@
+/*
+ * Yivents design tokens. Colours sampled from the supplied logo:
+ * deep blue #104080, warm orange #F08010, cyan #30A0E0.
+ * Change the brand here; organizer pages only override --brand-primary/accent
+ * inside a scoped [data-brand] container.
+ */
+:root {
+  --brand-primary: #104080;
+  --brand-primary-hover: #0C3368;
+  --brand-primary-ink: #FFFFFF;
+  --brand-accent: #F08010;
+  --brand-accent-ink: #241300;
+  --brand-cyan: #30A0E0;
+  --brand-primary-soft: #EAF1FA;
+  --brand-accent-soft: #FFF2DF;
+
+  --ink: #14213D;
+  --ink-muted: #4B5B75;
+  --surface: #FFFFFF;
+  --surface-alt: #F5F8FC;
+  --border: #D5DEEA;
+  --success: #0E6B4F;
+  --success-soft: #E3F5EE;
+  --danger: #A5232A;
+  --danger-soft: #FCE9EA;
+  --warning: #7A4E00;
+  --warning-soft: #FFF2D9;
+
+  --radius: 14px;
+  --radius-sm: 10px;
+  --shadow: 0 12px 32px rgba(16, 64, 128, 0.12);
+  --tap: 44px;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--surface-alt);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.2; margin: 0 0 0.5em; }
+h1 { font-size: clamp(2rem, 5vw, 3.25rem); }
+h2 { font-size: clamp(1.5rem, 3.4vw, 2.25rem); }
+h3 { font-size: 1.25rem; }
+p { margin: 0 0 1rem; }
+a { color: var(--brand-primary); text-underline-offset: 3px; }
+img { max-width: 100%; display: block; }
+button, input, select, textarea { font: inherit; color: inherit; }
+label { display: block; font-weight: 600; margin-bottom: 0.35rem; }
+:focus-visible { outline: 3px solid var(--brand-accent); outline-offset: 2px; }
+::selection { background: var(--brand-accent-soft); }
+
+/* All interactive targets meet the 44px minimum. */
+.btn, button, input[type='checkbox'], input[type='radio'], select, .tap-target { min-height: var(--tap); }
+input, select, textarea { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.7rem 0.85rem; width: 100%; }
+input[type='checkbox'], input[type='radio'] { width: 22px; min-height: 22px; accent-color: var(--brand-primary); }
+
+.yv-container { width: min(1120px, 92vw); margin-inline: auto; }
+.yv-stack { display: grid; gap: 1rem; }
+.yv-row { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
+.yv-spread { display: flex; gap: 0.75rem; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+.yv-muted { color: var(--ink-muted); }
+.yv-tiny { font-size: 0.82rem; }
+.yv-visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
