@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Signing out — Yivents</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <script type="module">
+    import { auth, signOut } from './assets/firebase.js';
+    await signOut(auth);
+    location.replace('index.html');
+  </script>
+</head>
+<body>
+  <main class="container block"><p>Signing out…</p></main>
+</body>
+</html>

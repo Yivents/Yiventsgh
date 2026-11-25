@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard — Yivents</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body data-page="app">
+  <header class="site">
+    <div class="container">
+      <a class="brand" href="index.html"><img src="apps/web/public/brand/logo.png" alt=""><span>Yivents</span></a>
+      <nav><ul><li><span id="auth-label" class="muted">Sign in</span></li><li><a href="index.html">Events</a></li><li><button id="logout-button" class="outline" type="button">Sign out</button></li></ul></nav>
+    </div>
+  </header>
+  <main class="container block">
+    <div id="page-message"></div>
+    <div id="app-content"></div>
+
+    <section id="create-section" class="panel" style="margin-top:1.5rem">
+      <h2>Create a program</h2>
+      <form id="new-program-form">
+        <div class="field"><label for="title">Title</label><input id="title" name="title" required maxlength="120"></div>
+        <div class="field"><label for="description">Short description</label><textarea id="description" name="description" maxlength="500"></textarea></div>
+        <div class="field"><label for="startAt">Start date/time</label><input id="startAt" name="startAt" type="datetime-local"></div>
+        <div class="field"><label for="capacity">Capacity (0 = no limit)</label><input id="capacity" name="capacity" type="number" min="0" value="0"></div>
+        <button id="new-program-button" class="primary" type="submit">Create program</button>
+      </form>
+    </section>
+
+    <section id="field-section" class="panel" style="margin-top:1.5rem" hidden>
+      <h2>Add a registration question</h2>
+      <form id="program-field-form">
+        <div class="field"><label for="label">Question</label><input id="label" name="label" required maxlength="120"></div>
+        <div class="field"><label for="type">Answer type</label><select id="type" name="type"><option value="text">Text</option><option value="tel">Phone</option><option value="email">Email</option><option value="select">Choice</option></select></div>
+        <label><input name="required" type="checkbox"> Required</label>
+        <button class="primary" type="submit">Add question</button>
+      </form>
+    </section>
+
+    <section id="payment-section" class="panel" style="margin-top:1.5rem" hidden>
+      <h2>Add payment instructions</h2>
+      <form id="payment-form">
+        <div class="field"><label for="name">Method name</label><input id="name" name="name" required placeholder="MTN MoMo"></div>
+        <div class="field"><label for="details">Instructions</label><textarea id="details" name="details" required placeholder="Send to 0XXX XXX XXX, then upload the screenshot"></textarea></div>
+        <button class="primary" type="submit">Add payment method</button>
+      </form>
+    </section>
+
+    <section id="flyer-section" class="panel" style="margin-top:1.5rem" hidden>
+      <h2>Upload event flyer</h2>
+      <form id="flyer-form">
+        <div class="field"><label for="flyer">Image (max 5 MB)</label><input id="flyer" name="flyer" type="file" accept="image/*"></div>
+        <button class="primary" type="submit">Upload to Firebase Storage</button>
+      </form>
+    </section>
+
+    <p class="tiny muted" style="margin-top:1.5rem">New programs start private. An admin approves the public listing before it appears on the homepage.</p>
+  </main>
+  <script type="module" src="assets/app.js"></script>
+</body>
+</html>

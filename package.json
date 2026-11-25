@@ -1,0 +1,28 @@
+{
+  "name": "yivents",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Yivents — registration, payment tracking and ticketing for Ghanaian event organizers",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace @yivents/web",
+    "build": "npm run build --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "emulators": "firebase emulators:start --project yivents-demo --config firebase/firebase.json",
+    "test:rules": "npm run test --workspace @yivents/functions -- --runInBand"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.18.0",
+    "@typescript-eslint/parser": "^8.18.0",
+    "eslint": "^9.17.0",
+    "typescript": "^5.7.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

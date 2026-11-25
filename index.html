@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Yivents — registration and tickets for Ghanaian events. Hosted on GitHub Pages, powered by Firebase Auth, Firestore and Storage.">
+  <title>Yivents — Find events</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body data-page="home">
+  <div class="banner"><div class="container">Static site on GitHub Pages · Firebase Auth, Firestore and Storage · No server hosting required</div></div>
+  <header class="site">
+    <div class="container">
+      <a class="brand" href="index.html"><img src="apps/web/public/brand/logo.png" alt=""><span>Yivents</span></a>
+      <nav aria-label="Main navigation"><ul>
+        <li><a href="index.html">Find events</a></li>
+        <li><a href="app.html">Host an event</a></li>
+        <li><a href="legal.html?slug=terms">Legal</a></li>
+        <li><a id="auth-link" href="login.html">Sign in</a></li>
+      </ul></nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="container hero-inner">
+        <div class="stack">
+          <p><span class="badge">Registration and tickets for Ghanaian events</span></p>
+          <h1>Find your next event</h1>
+          <p class="muted">Discover an event, register in minutes, pay the organizer directly and keep your QR ticket on your phone. You never need a password.</p>
+          <form class="search" action="index.html" method="get" role="search">
+            <label class="visually-hidden" for="q">Search events by name</label>
+            <input id="q" name="q" type="search" placeholder="Search by event name">
+            <button class="btn btn-primary" type="submit">Search</button>
+          </form>
+        </div>
+        <div class="hero-art" aria-hidden="true"><img src="apps/web/public/brand/logo.png" alt=""></div>
+      </div>
+    </div>
+
+    <section class="block">
+      <div class="container">
+        <div class="spread">
+          <div><h2 id="search-label">Upcoming events</h2><p class="muted">Only admin-approved public events appear here.</p></div>
+          <a class="btn btn-accent" href="app.html">Host your event</a>
+        </div>
+        <div id="page-message"></div>
+        <div id="event-list" class="grid grid-3"></div>
+      </div>
+    </section>
+
+    <section class="block alt">
+      <div class="container grid grid-3">
+        <div class="panel"><h3>No account needed</h3><p class="muted">Register as a guest. Firebase Anonymous Auth creates a temporary session only for uploads.</p></div>
+        <div class="panel"><h3>Pay the organizer</h3><p class="muted">Yivents never holds or processes money. GHS only, stored as integer pesewas.</p></div>
+        <div class="panel"><h3>QR tickets</h3><p class="muted">Approved registrations get a random ticket code. Only the code is in the QR.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site">
+    <div class="container">
+      <strong>Yivents</strong>
+      <p class="tiny">Static GitHub Pages site · Firebase Auth / Firestore / Storage · Spark plan friendly.</p>
+      <p class="tiny">Draft legal text: [LEGAL REVIEW NEEDED] · [YOUR NAME] · [SUPPORT EMAIL] · [DOMAIN]. Act 843 references require lawyer review.</p>
+    </div>
+  </footer>
+  <script type="module" src="assets/app.js"></script>
+</body>
+</html>

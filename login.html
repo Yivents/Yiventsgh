@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign in — Yivents</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body data-page="login">
+  <header class="site">
+    <div class="container">
+      <a class="brand" href="index.html"><img src="apps/web/public/brand/logo.png" alt=""><span>Yivents</span></a>
+      <nav><ul><li><a href="index.html">← Events</a></li></ul></nav>
+    </div>
+  </header>
+  <main class="container block">
+    <div id="page-message"></div>
+    <div class="grid grid-2">
+      <section class="panel">
+        <h1>Organizer sign in</h1>
+        <form id="signin-form">
+          <div class="field"><label for="signin-email">Email</label><input id="signin-email" name="email" type="email" required></div>
+          <div class="field"><label for="signin-password">Password</label><input id="signin-password" name="password" type="password" required></div>
+          <button class="primary" type="submit">Sign in</button>
+        </form>
+        <p><label for="reset-email">Forgot password?</label><input id="reset-email" type="email"><button id="reset-button" class="outline" type="button" style="margin-top:.5rem">Send reset link</button></p>
+      </section>
+      <section class="panel">
+        <h2>Create organizer account</h2>
+        <form id="signup-form">
+          <div class="field"><label for="signup-name">Your name</label><input id="signup-name" name="name" required maxlength="80"></div>
+          <div class="field"><label for="signup-email">Email</label><input id="signup-email" name="email" type="email" required></div>
+          <div class="field"><label for="signup-password">Password (8+ characters)</label><input id="signup-password" name="password" type="password" minlength="8" required></div>
+          <button class="primary" type="submit">Create account</button>
+        </form>
+        <div id="login-message"></div>
+      </section>
+    </div>
+  </main>
+  <script type="module" src="assets/app.js"></script>
+</body>
+</html>
